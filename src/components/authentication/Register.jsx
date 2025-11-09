@@ -1,117 +1,126 @@
-import React, { useContext } from "react";
-import { NavLink } from "react-router";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate, NavLink } from "react-router";
+import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
-  const handleGoogleSignIn = () => {
-    signInWithGoogle().then((result) => {
-      console.log(result.user);
-      const newUser = {
-        name: result.user.displayName,
-        email: result.user.email,
-        image: result.user.photoURL,
-      };
-      // -------
-      fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("data after user save", data);
+  const { createUser, googleLogin } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const image = e.target.image.value;
+    const password = e.target.password.value;
+
+    setLoading(true);
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+
+        updateProfile(user, {
+          displayName: name,
+          photoURL: image,
         })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+          .then(() => "Profile updated successfully!")
+          .catch((err) => toast.error(err.message));
+
+        toast.success("Registration successful!");
+        navigate("/");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
+  };
+
+  const handleGoogleLogin = () => {
+    setLoading(true);
+    googleLogin()
+      .then(() => {
+        toast.success("Logged in with Google!");
+        navigate("/");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => setLoading(false));
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <div className="card-body">
-            <h1 className="text-5xl font-bold">Register now!</h1>
-            <fieldset className="fieldset">
-              {/* name */}
-              <label className="label">Name</label>
-              <input
-                type="text"
-                name="name"
-                className="input"
-                placeholder="Name"
-              />
-              {/* email */}
-              <label className="label">Email</label>
-              <input
-                name="email"
-                type="email"
-                className="input"
-                placeholder="Email"
-              />
-              {/* photo */}
-              <label className="label">Photo Url</label>
-              <input
-                name="photoUrl"
-                type="url"
-                className="input"
-                placeholder="Photo Url"
-              />
-              {/* password */}
-              <label className="label">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="input"
-                placeholder="Password"
-              />
-              <button className="btn btn-neutral mt-4">Register</button>
-              <button
-                onClick={handleGoogleSignIn}
-                className="btn bg-white text-black border-[#e5e5e5]"
-              >
-                <svg
-                  aria-label="Google logo"
-                  width="16"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <g>
-                    <path d="m0 0H512V512H0" fill="#fff"></path>
-                    <path
-                      fill="#34a853"
-                      d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                    ></path>
-                    <path
-                      fill="#4285f4"
-                      d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                    ></path>
-                    <path
-                      fill="#fbbc02"
-                      d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                    ></path>
-                    <path
-                      fill="#ea4335"
-                      d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                    ></path>
-                  </g>
-                </svg>
-                SignIn with Google
-              </button>
-              <p className="font-semibold">
-                Already you have an account ?{" "}
-                <span className="text-red-500">
-                  <NavLink to="/login">Login</NavLink>
-                </span>
-              </p>
-            </fieldset>
-          </div>
-        </div>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="card bg-base-100 shadow-xl w-full max-w-sm">
+        <form className="card-body" onSubmit={handleRegister}>
+          <h1 className="text-3xl font-bold text-center">Register</h1>
+
+          <label className="label w-11/12 mx-auto">Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter Name"
+            className="input input-bordered w-11/12 mx-auto"
+            required
+            autoComplete="name"
+          />
+
+          <label className="label w-11/12 mx-auto">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            className="input input-bordered w-11/12 mx-auto"
+            required
+            autoComplete="email"
+          />
+
+          <label className="label w-11/12 mx-auto">Image URL</label>
+          <input
+            type="text"
+            name="image"
+            placeholder="Image URL"
+            className="input input-bordered w-11/12 mx-auto"
+            required
+            autoComplete="off"
+          />
+
+          <label className="label w-11/12 mx-auto">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            className="input input-bordered w-11/12 mx-auto"
+            required
+            autoComplete="new-password"
+          />
+
+          <button
+            type="submit"
+            className="btn btn-primary w-11/12 mx-auto mt-4"
+            disabled={loading}
+          >
+            {loading ? "Registering..." : "Register"}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            className="btn btn-outline w-11/12 mx-auto mt-2"
+          >
+            <img
+              className="w-4 mr-2"
+              src="https://i.ibb.co/4ZdnG9FB/icons8-google-48.png"
+              alt="Google Logo"
+            />
+            Register with Google
+          </button>
+
+          <p className="text-center mt-2">
+            Already have an account?{" "}
+            <NavLink to="/login" className="text-blue-600 underline">
+              Login
+            </NavLink>
+          </p>
+        </form>
       </div>
     </div>
   );
