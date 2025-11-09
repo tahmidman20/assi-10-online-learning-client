@@ -1,9 +1,19 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Successfully signed out");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   const links = (
     <>
       <li>
@@ -13,7 +23,7 @@ const Navbar = () => {
         <NavLink to="/courses">Courses</NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard ">Dashboard </NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
     </>
   );
@@ -47,15 +57,31 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-primary">
+              Online
+            </span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold">
+              Learning
+            </span>
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-secondary">
+              Platform
+            </span>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">
-            <button className="btn">{user ? " Sign Out" : "Login"}</button>
-          </Link>
+          {user ? (
+            <button onClick={handleSignOut} className="btn btn-primary">
+              Sign Out
+            </button>
+          ) : (
+            <NavLink to="/login">
+              <button className="btn btn-primary">Login</button>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

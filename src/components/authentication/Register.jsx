@@ -40,7 +40,7 @@ const Register = () => {
     setLoading(true);
     googleLogin()
       .then(() => {
-        toast.success("Logged in with Google!");
+        toast.success("Registration successful!");
         navigate("/");
       })
       .catch((err) => toast.error(err.message))
