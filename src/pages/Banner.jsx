@@ -15,7 +15,7 @@ const Banner = () => {
               Improve your skills with structured courses and hands-on learning.
             </p>
             <Link to="/courses">
-              <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl text-lg font-medium hover:bg-blue-700 transition">
+              <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-md text-lg font-medium hover:bg-blue-700 transition">
                 Explore Courses
               </button>
             </Link>

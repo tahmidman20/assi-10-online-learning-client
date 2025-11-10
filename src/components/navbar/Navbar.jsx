@@ -17,13 +17,50 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-700 font-bold text-md underline"
+              : "text-blue-500 font-semibold"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/courses"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-700 font-bold text-md underline"
+              : "text-blue-500 font-semibold"
+          }
+        >
+          Courses
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/courses">Courses</NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <div className="dropdown dropdown-right">
+          <div tabIndex={0} role="button" className="font-semibold">
+            Dashboard
+          </div>
+          <ul
+            tabIndex="-1"
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a> My enrolled course</a>
+            </li>
+            <li>
+              <a> Add course</a>
+            </li>
+            <li>
+              <a> My added course etc.</a>
+            </li>
+          </ul>
+        </div>
       </li>
     </>
   );
@@ -70,7 +107,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 text-blue-500">{links}</ul>
         </div>
         <div className="navbar-end mx-10">
           {user ? (
@@ -79,7 +116,9 @@ const Navbar = () => {
             </button>
           ) : (
             <NavLink to="/login">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn  bg-blue-600 text-white text-lg font-medium hover:bg-blue-700 transition">
+                Login
+              </button>
             </NavLink>
           )}
         </div>
