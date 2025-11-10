@@ -3,7 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import Loading from "../Loading";
 import { NavLink } from "react-router";
-import { div } from "framer-motion/client";
+// import { div } from "framer-motion/client";
 
 const PopularCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -17,12 +17,7 @@ const PopularCourses = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading)
-    return (
-      <p className="text-center mt-10 text-gray-500 text-lg animate-pulse">
-        <Loading></Loading>
-      </p>
-    );
+  if (loading) return <Loading></Loading>;
 
   return (
     <div className="bg-gradient-to-b from-white to-blue-50">

@@ -43,7 +43,11 @@ const Navbar = () => {
       </li>
       <li>
         <div className="dropdown dropdown-right">
-          <div tabIndex={0} role="button" className="font-semibold">
+          <div
+            tabIndex={0}
+            role="button"
+            className="font-semibold text-blue-500"
+          >
             Dashboard
           </div>
           <ul
