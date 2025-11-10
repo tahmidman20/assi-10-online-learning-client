@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         Component: Courses,
       },
       {
-        path: "dashboard ",
+        path: "dashboard",
         Component: Dashboard,
       },
       {

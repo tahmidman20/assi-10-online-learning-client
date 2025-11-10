@@ -57,7 +57,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+          <div className="flex items-center gap-1 sm:gap-2 flex-wrap mx-10">
             <span className="text-lg sm:text-xl md:text-2xl font-bold text-primary">
               Online
             </span>
@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end mx-10">
           {user ? (
             <button onClick={handleSignOut} className="btn btn-primary">
               Sign Out
