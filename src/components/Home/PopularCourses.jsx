@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Loading from "../Loading";
-import { NavLink } from "react-router";
-// import { div } from "framer-motion/client";
+import { Link, NavLink } from "react-router";
 
 const PopularCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -61,7 +60,7 @@ const PopularCourses = () => {
                     ${course.price}
                   </p>
                   <button className="mt-auto btn  bg-blue-600 text-white text-md font-medium hover:bg-blue-700 transition">
-                    <NavLink to="/details">View Details</NavLink>
+                    <Link to={`/details/${course._id}`}>View Details</Link>
                   </button>
                 </div>
               </div>

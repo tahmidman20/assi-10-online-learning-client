@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         Component: Login,
       },
       {
-        path: "details",
+        path: "details/:id",
         element: <ViewDetails></ViewDetails>,
       },
     ],

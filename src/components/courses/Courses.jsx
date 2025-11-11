@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { CircleLoader } from "react-spinners";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -66,7 +66,7 @@ const Courses = () => {
               </div>
               <div className="flex gap-3 mt-auto">
                 <button className="mt-auto btn  bg-blue-600 text-white text-md font-medium hover:bg-blue-700 transition">
-                  <NavLink to="/details">View Details</NavLink>
+                  <Link to={`/details/${course._id}`}>View Details</Link>
                 </button>
               </div>
             </div>
