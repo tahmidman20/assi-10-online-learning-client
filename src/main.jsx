@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import ViewDetails from "./pages/ViewDetails.jsx";
 import MyEnrolledCourses from "./pages/MyEnrolledCourses.jsx";
 import Error from "./components/Error.jsx";
+import PrivateRoute from "./components/routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,11 +44,19 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myEnrolledCourse",
-        element: <MyEnrolledCourses></MyEnrolledCourses>,
+        element: (
+          <PrivateRoute>
+            <MyEnrolledCourses></MyEnrolledCourses>,
+          </PrivateRoute>
+        ),
       },
     ],
   },
