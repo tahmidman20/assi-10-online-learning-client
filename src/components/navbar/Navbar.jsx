@@ -54,9 +54,16 @@ const Navbar = () => {
             tabIndex="-1"
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
-            <Link to="/myEnrolledCourse">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-700 font-bold text-md underline"
+                  : "text-blue-500 font-semibold"
+              }
+              to="/myEnrolledCourse"
+            >
               <p> My enrolled course</p>
-            </Link>
+            </NavLink>
             <li>
               <a> Add course</a>
             </li>
@@ -115,7 +122,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end mx-10">
           {user ? (
-            <button onClick={handleSignOut} className="btn btn-primary">
+            <button onClick={handleSignOut} className="btn btn-primary text-lg">
               Sign Out
             </button>
           ) : (

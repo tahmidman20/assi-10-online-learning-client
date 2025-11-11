@@ -15,6 +15,13 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must be at least 6 characters long and include both uppercase and lowercase letters."
+      );
+      return;
+    }
 
     signInUser(email, password)
       .then(() => {
