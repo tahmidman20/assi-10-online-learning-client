@@ -16,6 +16,7 @@ import ViewDetails from "./pages/ViewDetails.jsx";
 import MyEnrolledCourses from "./pages/MyEnrolledCourses.jsx";
 import Error from "./components/Error.jsx";
 import PrivateRoute from "./components/routes/PrivateRoute.jsx";
+import AddCourse from "./pages/AddCourse.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyEnrolledCourses></MyEnrolledCourses>,
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-course",
+        element: (
+          <PrivateRoute>
+            <AddCourse></AddCourse>
           </PrivateRoute>
         ),
       },
