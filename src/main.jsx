@@ -13,6 +13,7 @@ import AuthProvider from "./components/context/AuthProvider.jsx";
 import Register from "./components/authentication/Register.jsx";
 import { ToastContainer } from "react-toastify";
 import ViewDetails from "./pages/ViewDetails.jsx";
+import MyEnrolledCourses from "./pages/MyEnrolledCourses.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <ViewDetails></ViewDetails>,
+      },
+      {
+        path: "myEnrolledCourse",
+        element: <MyEnrolledCourses></MyEnrolledCourses>,
       },
     ],
   },
