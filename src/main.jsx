@@ -14,6 +14,7 @@ import Register from "./components/authentication/Register.jsx";
 import { ToastContainer } from "react-toastify";
 import ViewDetails from "./pages/ViewDetails.jsx";
 import MyEnrolledCourses from "./pages/MyEnrolledCourses.jsx";
+import Error from "./components/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         element: <MyEnrolledCourses></MyEnrolledCourses>,
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <Error></Error>,
   },
 ]);
 
