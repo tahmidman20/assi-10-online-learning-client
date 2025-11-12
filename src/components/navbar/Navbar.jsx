@@ -76,9 +76,16 @@ const Navbar = () => {
               <p> Add course</p>
             </NavLink>
 
-            <li>
-              <a> My added course etc.</a>
-            </li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-700 font-bold text-md underline"
+                  : "text-blue-500 font-semibold"
+              }
+              to="/my-added-course"
+            >
+              <p>My added course etc.</p>
+            </NavLink>
           </ul>
         </div>
       </li>
