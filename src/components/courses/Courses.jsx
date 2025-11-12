@@ -8,13 +8,37 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   useEffect(() => {
     axios
       .get("https://a-10-online-learning-server.vercel.app/courses")
-      .then((res) => setCourses(res.data))
+      .then((res) => {
+        console.log("Courses:", res.data);
+        setCourses(res.data);
+      })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://a-10-online-learning-server.vercel.app/categories")
+      .then((res) => {
+        console.log("Categories:", res.data);
+        setCategories(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const filteredCourses =
+    selectedCategory === "All"
+      ? courses
+      : courses.filter(
+          (course) =>
+            course.category?.toLowerCase() === selectedCategory.toLowerCase()
+        );
 
   if (loading)
     return (
@@ -25,10 +49,34 @@ const Courses = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-4xl font-bold mb-10 text-center">All Courses</h2>
-
+      <h2 className="text-4xl font-bold mb-10 text-center ">All Courses</h2>
+      <div className="flex justify-center gap-4 mb-10 flex-wrap">
+        <button
+          onClick={() => setSelectedCategory("All")}
+          className={`px-4 py-2 rounded-full font-medium transition ${
+            selectedCategory === "All"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat._id}
+            onClick={() => setSelectedCategory(cat.name)}
+            className={`px-4 py-2 rounded-full font-medium transition ${
+              selectedCategory === cat.name
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {courses.map((course) => (
+        {filteredCourses.map((course) => (
           <motion.div
             key={course._id}
             whileHover={{ scale: 1.05 }}
