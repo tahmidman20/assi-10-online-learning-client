@@ -15,7 +15,7 @@ const ViewDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/courses/${id}`)
+      .get(`https://a-10-online-learning-server.vercel.app/courses/${id}`)
       .then((res) => {
         setCourse(res.data);
         setLoading(false);
@@ -47,7 +47,7 @@ const ViewDetails = () => {
     };
 
     axios
-      .post("http://localhost:3000/enroll", enrollData)
+      .post("https://a-10-online-learning-server.vercel.app/enroll", enrollData)
       .then(() => {
         toast.success("Enrolled successfully!");
       })

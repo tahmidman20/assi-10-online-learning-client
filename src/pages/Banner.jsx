@@ -4,10 +4,10 @@ import { Link } from "react-router";
 const Banner = () => {
   return (
     <div>
-      <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+      <div className=" py-16 px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight ">
               Learn New Skills Online
             </h1>
 

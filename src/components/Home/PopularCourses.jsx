@@ -10,7 +10,7 @@ const PopularCourses = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/courses/popular")
+      .get("https://a-10-online-learning-server.vercel.app/courses/popular")
       .then((res) => setCourses(res.data))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
@@ -19,9 +19,9 @@ const PopularCourses = () => {
   if (loading) return <Loading></Loading>;
 
   return (
-    <div className="bg-gradient-to-b from-white to-blue-50">
+    <div className="">
       <div className="w-11/12 mx-auto px-4 py-12 ">
-        <h2 className="text-4xl font-bold mb-10 text-center text-gray-800">
+        <h2 className="text-4xl font-bold mb-10 text-center">
           Popular Courses
         </h2>
 

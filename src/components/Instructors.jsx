@@ -22,7 +22,7 @@ const Instructors = () => {
 
   return (
     <div>
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <h2 className="text-4xl font-bold text-center mb-12">
           Top Instructors
         </h2>

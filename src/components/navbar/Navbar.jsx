@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
@@ -14,6 +14,12 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const links = (
     <>
       <li>
@@ -137,6 +143,21 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 text-blue-500">{links}</ul>
         </div>
         <div className="navbar-end mx-10">
+          <button
+            className="btn btn-square btn-ghost"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme === "light" ? (
+              <span role="img" aria-label="moon">
+                🌙
+              </span>
+            ) : (
+              <span role="img" aria-label="sun">
+                ☀️
+              </span>
+            )}
+          </button>
+
           {user ? (
             <button onClick={handleSignOut} className="btn btn-primary text-lg">
               Sign Out

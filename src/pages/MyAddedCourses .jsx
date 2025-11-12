@@ -14,7 +14,9 @@ const MyAddedCourses = () => {
   const fetchCourses = useCallback(() => {
     if (!user?.email) return;
     axios
-      .get(`http://localhost:3000/courses?email=${user.email}`)
+      .get(
+        `https://a-10-online-learning-server.vercel.app/courses?email=${user.email}`
+      )
       .then((res) => setCourses(res.data))
       .catch((err) => console.log(err));
   }, [user?.email]);
@@ -35,7 +37,9 @@ const MyAddedCourses = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/courses/${id}`)
+          .delete(
+            `https://a-10-online-learning-server.vercel.app/courses/${id}`
+          )
           .then(() => {
             Swal.fire("Deleted!", "Your course has been deleted.", "success");
             fetchCourses();
@@ -65,7 +69,10 @@ const MyAddedCourses = () => {
     e.preventDefault();
 
     axios
-      .patch(`http://localhost:3000/courses/${editingCourse._id}`, updatedData)
+      .patch(
+        `https://a-10-online-learning-server.vercel.app/courses/${editingCourse._id}`,
+        updatedData
+      )
       .then(() => {
         toast.success("Course updated successfully!");
         document.getElementById("update_modal").close();

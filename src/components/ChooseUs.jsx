@@ -21,7 +21,7 @@ const ChooseUs = () => {
   ];
   return (
     <div>
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 ">
         <h2 className="text-4xl font-bold text-center mb-12">Why Choose Us</h2>
 
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">

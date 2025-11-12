@@ -30,7 +30,10 @@ const AddCourse = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/courses", courseData)
+      .post(
+        "https://a-10-online-learning-server.vercel.app/courses",
+        courseData
+      )
       .then(() => {
         toast.success("Course added successfully!");
         e.target.reset();

@@ -11,7 +11,9 @@ const MyEnrolledCourses = () => {
     setCourses(stored);
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/enroll?email=${user.email}`)
+        .get(
+          `https://a-10-online-learning-server.vercel.app/enroll?email=${user.email}`
+        )
         .then((res) => setCourses(res.data))
         .catch((err) => console.log(err));
     }

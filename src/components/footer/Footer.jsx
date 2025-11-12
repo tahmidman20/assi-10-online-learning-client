@@ -1,9 +1,5 @@
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -36,7 +32,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaTwitter className="hover:text-blue-400 transition-colors" />
+            <FaXTwitter className="hover:text-blue-400 transition-colors" />
           </a>
           <a
             href="https://instagram.com"
