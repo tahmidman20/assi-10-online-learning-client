@@ -1,3 +1,56 @@
+## প্রজেক্ট ওভারভিউ 
+
+এই প্রজেক্টটি একটি Online Learning / Courses ফ্রন্ট-এন্ড ওয়েব অ্যাপ—ইউজাররা কোর্স ব্রাউজ করতে, ডিটেইল দেখতে এবং ইন্টারঅ্যাক্ট করতে পারে। এই প্রজেক্টটি Single Page Application হিসেবে ডেপ্লয় করা আছে ।
+
+## মেইন টেকনোলজি 
+
+React.js — SPA UI তৈরি
+
+React Router — Routing system
+
+Tailwind CSS — Responsive UI
+
+Firebase Authentication — Login / Signup / User Management
+
+Netlify — Deployment
+
+JavaScript (ES6+)
+
+
+## মেইন ফিচার 
+
+হোম পেজ: হাইলাইটেড কোর্স/ব্যানার/ক্যাটাগরি।
+
+কোর্স তালিকা : সার্চ ও ফিল্টার করে কোর্স দেখা।
+
+কোর্স ডিটেইল পেজ: কোর্স বর্ণনা, পাঠ্যক্রম, রিভিউ ইত্যাদি।
+
+রেসপন্সিভ ডিজাইন: ডেক্সটপ ও মোবাইলে ঠিকঠাক কাজ করে।
+
+রাউট প্রটেকশন ): লগইন করা ব্যবহারকারীর জন্য ডিস্কাউন্ট/ড্যাশবোর্ড।
+
+ড্যাশবোর্ড/প্রাইভেট রউট (ইনস্ট্রাক্টর বা ইউজার হিসাব অনুযায়ী)।
+
+সহজ UI/UX এবং টেমপ্লেট-ভিত্তিক লেআউট।
+
+## লোকাল মেশিনে প্রজেক্ট রান
+
+### কমান্ড প্রম্পটে নিচের কমান্ড চালাতে হবে:
+git clone <REPO_URL>
+cd <PROJECT_FOLDER_NAME>
+
+### React প্রজেক্টের সমস্ত dependency ইনস্টল করতে হবে
+npm install
+
+### Firebase Environment Variables সেট করতে হবে
+প্রজেক্টের রুট ফোল্ডারে একটি .env ফাইল তৈরি করুন এবং Firebase কনফিগগুলো যোগ করুন:
+
+### ডেভেলপমেন্ট সার্ভার চালু করতে হবে
+npm run dev
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
