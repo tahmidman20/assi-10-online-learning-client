@@ -1,6 +1,7 @@
 ## প্রজেক্ট ওভারভিউ 
 
 এই প্রজেক্টটি একটি Online Learning / Courses ফ্রন্ট-এন্ড ওয়েব অ্যাপ—ইউজাররা কোর্স ব্রাউজ করতে, ডিটেইল দেখতে এবং ইন্টারঅ্যাক্ট করতে পারে। এই প্রজেক্টটি Single Page Application হিসেবে ডেপ্লয় করা আছে ।
+[![GitHub Streak](https://streak-stats.demolab.com/?user=tahmidman20&theme=dark&border_radius=4)](https://github.com/touhidcodes)
 
 ## মেইন টেকনোলজি 
 
