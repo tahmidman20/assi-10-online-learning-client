@@ -48,6 +48,25 @@ npm install
 ### ডেভেলপমেন্ট সার্ভার চালু করতে হবে
 npm run dev
 
+## Dependencies
+#### React 
+react
+react-dom
+react-router-dom
+
+#### UI & Styling
+tailwindcss
+
+ #### Animation 
+framer-motion (optional)
+
+#### react-icons
+
+## firebase
+Authentication
+
+
+
 
 
 
